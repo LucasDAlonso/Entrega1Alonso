@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Listado de Blogs</title>
+{% endblock title %}
+
+{% block h1text %}
+Listado de Blogs
+{% endblock h1text %}
+
+
+{% block post_header %}
+<p>
+    <a href={% url 'crear_blog' %}>Crear Blog</a>
+
+</p>
+<p>
+    <form action={% url 'listado_blogs' %}>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+</p>
+<p>
+    {% if listado_blogs %}
+    <ul>
+        {% for blog in listado_blogs %}
+        <li>{{blog}} </li>
+        
+        {% endfor %}
+   </ul>
+    {% else %}
+    No hay resultado en la busqueda
+    {% endif %}
+</p>
+
+
+{% endblock post_header %}

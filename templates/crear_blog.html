@@ -10,15 +10,13 @@ Creacion de Blog
 
 {% block post_header %}
 <p>
-    <form action="" method="POST">
-        <p>Titulo:
-        <input type="text" name ="Titulo">
-        </p>
-        <p>Contenido:
-        <input type="text" name ="contenido"> 
-        </p>
-        <input type="submit" value = "Crear">
-       
+   
+    <form action={% url 'crear_blog' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{blog.as_table}}
+        </table>
+       <button>Crear</button> 
     </form>
 </p>
 
