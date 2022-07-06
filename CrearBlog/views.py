@@ -2,13 +2,16 @@ from webbrowser import get
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from CrearBlog.forms import FormBlog
+from .forms import FormBlog
 from .models import Blog
 from datetime  import datetime
 
 # Create your views here.
 def vista1 (request):
     return render(request,'index.html')
+
+def acerca (request):
+    return render(request,'about.html')
 
 def crear_blog (request):
     
@@ -25,7 +28,7 @@ def crear_blog (request):
                     contenido= data.get("contenido"), 
                     fecha_creacion = fecha if fecha else datetime.now()
             )
-           blog.save()
+          
     
     # titulo = request.GET.get("titulo")
     # contenido = request.GET.get("contenido")
