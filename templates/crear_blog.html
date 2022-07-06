@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Crear Blog</title>
+{% endblock title %}
+
+{% block h1text %}
+Creacion de Blog
+{% endblock h1text %}
+
+{% block post_header %}
+<p>
+    <form action="" method="get">
+        <p>Titulo:
+        <input type="text" name ="Titulo">
+        </p>
+        <p>Contenido:
+        <input type="text" name ="contenido"> 
+        </p>
+        <input type="submit" value = "Crear">
+       
+    </form>
+</p>
+
+{% endblock post_header %}
