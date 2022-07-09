@@ -11,7 +11,7 @@ Listado de Blogs
 
 {% block post_header %}
 <p>
-    <a href={% url 'crear_blog' %}>Crear Blog</a>
+    <a href={% url 'create_blog' %}>Crear Blog</a> 
 
 </p>
 <p>
@@ -24,7 +24,15 @@ Listado de Blogs
     {% if listado_blogs %}
     <ul>
         {% for blog in listado_blogs %}
-        <li>{{blog}} </li>
+        <li>
+            {{blog}}
+            <a href={% url 'edit_blog' blog.id %}>edit</a> 
+            <a href={% url 'delete_blog' blog.id %}>delete</a>
+            <a href={% url 'readmore_blog' blog.id %}>read more</a>
+            
+
+
+        </li>
         
         {% endfor %}
    </ul>

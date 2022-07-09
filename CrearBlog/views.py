@@ -1,4 +1,5 @@
-from django.shortcuts import render
+
+from django.shortcuts import redirect, render
 from .forms import BusquedaBlogs, FormBlog
 from .models import Blog
 from datetime  import datetime
@@ -39,8 +40,8 @@ def crear_blog (request):
 
 def listado_blogs (request):
     
-    nombre_de_busqueda = request.GET.get("titulo")
-    if request.GET.get("titulo"):
+    nombre_de_busqueda = request.POST.get("titulo")
+    if request.POST.get("titulo"):
         listado_blogs = Blog.objects.filter(titulo__icontains = nombre_de_busqueda)
     else:
         
@@ -50,3 +51,32 @@ def listado_blogs (request):
         
     return render (request, "listado_blogs.html", {"listado_blogs": listado_blogs, "form": form})
 
+def editar_blog (request, id):
+    blog = Blog.objects.get(id=id)
+    
+    if request.method == "POST":
+        
+        form = FormBlog(request.POST)
+        if form.is_valid():
+             blog.titulo = form.cleaned_data.get("titulo")
+             blog.contenido =form.cleaned_data.get("contenido")
+             blog.fecha_creacion =form.cleaned_data.get("fecha_creacion")
+             blog.save()
+             
+             return redirect ("listado_blogs")
+        else:
+            return render (request, "edit_blog.html", {"form":form, "blog" : blog})
+        
+    form_blog = FormBlog(initial= {'titulo' : blog.titulo, 'contenido': blog.contenido , 'fecha_creacion' : blog.fecha_creacion})
+    
+    return render (request, "edit_blog.html", {"form":form_blog, "blog" : blog})
+    
+
+def eliminar_blog(request, id):
+    blog = Blog.objects.get(id=id)
+    blog.delete()
+    return redirect("listado_blogs")
+
+def mostrar_blog (request, id):
+    blog = Blog.objects.get(id=id)
+    return render(request,"read_more.html", {"blog" : blog})
