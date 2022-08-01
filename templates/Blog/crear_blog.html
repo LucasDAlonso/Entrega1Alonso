@@ -14,7 +14,7 @@ Crear Blog
 </p>
 <p>
    
-    <form action={% url 'crear_blog' %} method="POST" enctype= "multipart/from.data">
+    <form action={% url 'crear_blog' %} method="POST" enctype= "multipart/form-data">
         {% csrf_token %}
         <table>
             {{form.media}}

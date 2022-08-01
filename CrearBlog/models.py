@@ -6,7 +6,7 @@ class Blog(models.Model):
     titulo = models.CharField(max_length=30) 
     subtitulo = models.CharField(max_length=200)
     contenido = RichTextField(null=True)
-    autor = models.CharField(max_length=30, blank=True) 
+    autor = models.CharField(max_length=30) 
     fecha_creacion = models.DateField(null=True)
     imagen = models.ImageField(upload_to= "blos", null=True, blank=True)
     

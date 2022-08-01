@@ -1,5 +1,3 @@
-from telnetlib import AUTHENTICATION
-from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login as django_login
@@ -63,13 +61,11 @@ def edit_profile (request):
             if data.get("first_name"):
                 user.first_name = data.get("first_name")
             if data.get("last_name"):
-                user.last_name = data.get("last_name")
-            
-            user.descipcion = data.get("descripcion") if data.get("descripcion") else user.descripcion
-            user.link = data.get("link") if data.get("link") else user.link
+                user.last_name = data.get("last_name")            
             user.email = data.get("email") if data.get("email") else user.email
             more_user_data.avatar = data.get("avatar") if data.get("avatar") else more_user_data.avatar
-            
+            more_user_data.descripcion = data.get("descripcion") if data.get("descripcion") else more_user_data.descripcion
+            more_user_data.link = data.get("link") if data.get("link") else more_user_data.link
             if data.get("password1") and data.get("password1") == data.get("password2"):
                 user.set_password(data.get("password1"))
             more_user_data.save()
@@ -83,8 +79,10 @@ def edit_profile (request):
                 "email" : user.email,
                 "first_name": user.first_name,
                 "last_name": user.last_name,
-                "descripcion": user.descripcion,
+                "descripcion":more_user_data.descripcion,
+                "link": more_user_data.link,
                 "avatar" : more_user_data.avatar,
+                
             }
         )
         
