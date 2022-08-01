@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Crear Blog</title>
+<title>Login</title>
 {% endblock title %}
 
 {% block h1text %}
-Creacion de Blog
+Login
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
-    <a href={% url 'listado_blogs' %}> volver</a>
+    <a href={% url 'home' %}> Back</a>
 </p>
 <p>
    
-    <form action={% url 'create_blog' %} method="POST">
+    <form action={% url "login" %} method="POST">
         {% csrf_token %}
         <table>
-            {{blog.as_table}}
+            {{form.as_table}}
         </table>
-       <button>Crear</button> 
+       <button>Login</button> 
     </form>
 </p>
 

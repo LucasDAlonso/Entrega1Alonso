@@ -1,14 +1,18 @@
 from django.urls import path
-from .views import vista1, crear_blog, acerca, listado_blogs, editar_blog, eliminar_blog, mostrar_blog
+
+from CrearBlog.views import CrearBlog, EditarBlog, EliminarBlog, ListadoBlogs
+from .views import vista1, acerca
+from . import views
 
 urlpatterns = [
     path('', vista1,name="home"),
-    path('create-blog/',crear_blog,name="create_blog"),
-    path('edit-blog/<int:id>',editar_blog,name="edit_blog"),
-    path('delete-blog/<int:id>',eliminar_blog,name="delete_blog"),
-    path('readmore-blog/<int:id>',mostrar_blog,name="readmore_blog"),
     path('aboutus/',acerca,name = "aboutus"),
-    path('pages/',listado_blogs,name ="listado_blogs")
+    path('pages/', views.ListadoBlogs.as_view(), name='listado_blogs'),
+    path('create-blog/', views.CrearBlog.as_view(), name='create_blog'),
+    path('edit-blog/<int:pk>/', views.EditarBlog.as_view(), name='edit_blog'),
+    path('delete-blog/<int:pk>/', views.EliminarBlog.as_view(), name='delete_blog'),
+    path('readmore-blog/<int:pk>/', views.MostrarBlog.as_view(), name='readmore_blog'),
+    
     
 
 ]

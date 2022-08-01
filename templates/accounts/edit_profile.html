@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Edit Profile</title>
+{% endblock title %}
+
+{% block h1text %}
+Edit Profile {{request.user.username}}
+{% endblock h1text %}
+
+{% block post_header %}
+<p>
+    <a href={% url 'profile' %}> Back</a>
+</p>
+<p>
+   <form action={% url "edit_profile" %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table>
+       <button>Edit</button> 
+    </form>
+</p>
+
+{% endblock post_header %}

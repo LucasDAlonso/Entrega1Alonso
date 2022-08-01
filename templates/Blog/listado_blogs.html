@@ -21,9 +21,9 @@ Listado de Blogs
     </form>
 </p>
 <p>
-    {% if listado_blogs %}
+    {% if object_list%}
     <ul>
-        {% for blog in listado_blogs %}
+        {% for blog in object_list %}
         <li>
             {{blog}}
             <a href={% url 'edit_blog' blog.id %}>edit</a> 
