@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Listado de Blogs</title>
+<title>Blog List</title>
 {% endblock title %}
 
 {% block h1text %}
-Listado de Blogs
+Blog List
 {% endblock h1text %}
 
 
 {% block post_header %}
 <p>
-    <a href={% url 'create_blog' %}>Crear Blog</a> 
+    <a href={% url 'create_blog' %}>Create Blog</a> 
 
 </p>
 <p>
     <form action={% url 'listado_blogs' %}>
         {{form}}
-        <button>Buscar</button>
+        <button>Search</button>
     </form>
 </p>
 <p>
-    {% if object_list%}
+    {% comment %} {% if object_list%}
     <ul>
         {% for blog in object_list %}
         <li>
@@ -34,11 +34,11 @@ Listado de Blogs
 
         </li>
         
-        {% endfor %}
+        {% endfor %} {% endcomment %}
    </ul>
-    {% else %}
+    {% comment %} {% else %}
     No hay resultado en la busqueda
-    {% endif %}
+    {% endif %} {% endcomment %}
 </p>
 
 

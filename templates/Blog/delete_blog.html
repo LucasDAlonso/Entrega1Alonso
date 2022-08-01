@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Editar Blog</title>
+<title>Delete Blog</title>
 {% endblock title %}
 
 {% block h1text %}
-Editar Blog
+Delete Blog
 {% endblock h1text %}
 
 {% block post_header %}
@@ -13,13 +13,13 @@ Editar Blog
     <a href={% url 'listado_blogs' %}> Back</a>
 </p>
 <p>
-   <form action={% url 'edit_blog' blog.id %} method="post">
+   <form action={% url 'delete_blog' blog.id %} method="post">
         {% csrf_token %}
+        Are you sure?
         <table>
-            {{form.media}}
             {{form.as_table}}
         </table>
-       <button>Edit</button> 
+       <button>Confirm</button> 
     </form>
 </p>
 

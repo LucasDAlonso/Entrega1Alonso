@@ -14,6 +14,12 @@ Profile {{request.user.username}}
         <li>Name: {{request.user.first_name}}</li>
         <li>Last Name: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
+        <LI>
+           <p>Avatar: </p>
+           {% if request.user.moreuserdata.avatar %}
+            <img src={{request.user.moreuserdata.avatar.url}} alt="" height="100px">
+            {% endif %}
+        </LI>
 
     </ul>
 </p>

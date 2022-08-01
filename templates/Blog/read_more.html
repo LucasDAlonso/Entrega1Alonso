@@ -10,16 +10,18 @@
 
 {% block post_header %}
 <p>
-<a href={% url 'listado_blogs' %}> volver</a>
+<a href={% url 'listado_blogs' %}> Back</a>
 </p>
 <p>
     <ul>
         <li>
             {{blog.titulo}}
         </li>
+            {{blog.subtitulo}}
         <li>
             {{blog.contenido}}
         </li>
+
         <li>
             {{blog.fecha_creacion}}
         </li>

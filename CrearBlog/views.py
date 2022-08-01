@@ -35,14 +35,14 @@ class CrearBlog(CreateView):
     model=Blog
     template_name = 'Blog/crear_blog.html'
     success_url = '/pages'
-    fields = ['titulo', 'contenido', 'fecha_creacion']
+    fields = ['titulo', "contenido", "descripcion",'fecha_creacion']
 
 
 class EditarBlog(LoginRequiredMixin, UpdateView):
     model=Blog
     template_name = 'Blog/edit_blog.html'
     success_url = '/pages'
-    fields = ['titulo', 'contenido', 'fecha_creacion']
+    fields = ['titulo', "contenido","descripcion", 'fecha_creacion']
 
 
 class EliminarBlog(LoginRequiredMixin, DeleteView):
