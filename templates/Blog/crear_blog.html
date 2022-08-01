@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Create Blog</title>
+<title>Crear Blog</title>
 {% endblock title %}
 
 {% block h1text %}
-Create Blog
+Crear Blog
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
-    <a href={% url 'listado_blogs' %}> Back</a>
+    <a href={% url 'listado_blogs' %}> Volver</a>
 </p>
 <p>
    
-    <form action={% url 'create_blog' %} method="POST">
+    <form action={% url 'crear_blog' %} method="POST" enctype= "multipart/from.data">
         {% csrf_token %}
         <table>
             {{form.media}}
             {{form.as_table}}
         </table>
-       <button>Create</button> 
+       <button>Crear</button> 
     </form>
 </p>
 

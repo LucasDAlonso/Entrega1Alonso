@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Blog</title>
+{% endblock title %}
+
+{% block h1text %}
+   Blog
+{% endblock h1text %}
+
+{% block post_header %}
+<p>
+<a href={% url 'listado_blogs' %} enctype = "multipart/form-data"> Volver</a>
+</p>
+<p>
+    <ul>
+        <li>Titulo:
+            <br>
+            {{blog.titulo}}
+        </li>
+        <li>Subtitulo:
+            <br>
+            {{blog.subtitulo}}
+        </li>
+        <li>Contenido:
+            <br>
+            {{blog.contenido}}
+        
+        </li>
+        <li>Autor:           
+            <br>
+            {{blog.autor}}
+        
+        </li>
+        <li>Fecha de Creacion:
+            <br>
+            {{blog.fecha_creacion}}
+        </li>
+        <li>
+            <img src={{request.blog.imagen.url}} alt="" height="100px">
+
+        </li>
+    </ul>
+</p>
+
+{% endblock post_header %}

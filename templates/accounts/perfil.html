@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Profile</title>
+<title>Perfil</title>
 {% endblock title %}
 
 {% block h1text %}
-Profile {{request.user.username}}
+Perfil {{request.user.username}}
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
     <ul>
-        <li>Name: {{request.user.first_name}}</li>
-        <li>Last Name: {{request.user.last_name}}</li>
+        <li>Nombre: {{request.user.first_name}}</li>
+        <li>Apellido: {{request.user.last_name}}</li>
         <li>Email: {{request.user.email}}</li>
+        <li>Descripcion: {{request.user.descripcion}}</li>
+        <li>Link: {{request.user.link}}</li>
+
         <LI>
            <p>Avatar: </p>
            {% if request.user.moreuserdata.avatar %}
@@ -24,7 +27,7 @@ Profile {{request.user.username}}
     </ul>
 </p>
 <p>
-    <a href={% url 'edit_profile' %}> Edit Profile</a>
+    <a href={% url 'editar_perfil' %}> Editar Perfil</a>
 </p>
 
 {% endblock post_header %}

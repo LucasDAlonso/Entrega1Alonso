@@ -3,9 +3,11 @@ from ckeditor.fields import RichTextFormField
 
 class FormBlog(forms.Form):
     titulo = forms.CharField(max_length=30)
-    contenido = forms.CharField(max_length=200)
-    descripcion = RichTextFormField()
+    subtitulo = forms.CharField(max_length=200)
+    contenido = RichTextFormField()
+    autor = forms.CharField(max_length=30)
     fecha_creacion = forms.DateField(required=False)
+    imagen = forms.ImageField(required=False)
     
     
 class BusquedaBlogs(forms.Form):

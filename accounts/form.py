@@ -7,11 +7,13 @@ class MyUserCreationForm(UserCreationForm):
     username= forms.CharField(label='Usuario', max_length=30)
     password1= forms.CharField(label='Password', widget=forms.PasswordInput)
     password2= forms.CharField(label='Repetir Password',widget=forms.PasswordInput)
+    descripcion= forms.CharField(label= "descripcion",max_length=200,required=False)
+    link = forms.URLField(label= "link",max_length=200,required=False)
     email = forms.EmailField()
 
     class Meta:
         model = User
-        fields = ["username","first_name","last_name","email","password1","password2"]
+        fields = ["username","first_name","last_name","descripcion","link","email","password1","password2"]
         help_texts = {key: "" for key in fields}
 
 class MyUserEditForm(forms.Form):
@@ -22,4 +24,6 @@ class MyUserEditForm(forms.Form):
     password1= forms.CharField(label='Password', widget=forms.PasswordInput,required=False)
     password2= forms.CharField(label='Repetir Password',widget=forms.PasswordInput,required=False)
     avatar = forms.ImageField(required=False)
+    descripcion= forms.CharField(label= "descripcion",max_length=30,required=False)
+    link = forms.URLField(label= "link",max_length=200,required=False)
     

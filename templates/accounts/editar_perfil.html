@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Delete Blog</title>
+<title>Editar Perfil</title>
 {% endblock title %}
 
 {% block h1text %}
-Delete Blog
+Editar Perfil {{request.user.username}}
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
-    <a href={% url 'listado_blogs' %}> Back</a>
+    <a href={% url 'perfil' %}> Volver</a>
 </p>
 <p>
-   <form action={% url 'delete_blog' blog.id %} method="post">
+   <form action={% url "editar_perfil" %} method="POST" enctype = "multipart/form-data">
         {% csrf_token %}
-        Are you sure?
         <table>
             {{form.as_table}}
         </table>
-       <button>Confirm</button> 
+       <button>Editar</button> 
     </form>
 </p>
 

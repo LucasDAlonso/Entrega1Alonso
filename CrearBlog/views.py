@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import BusquedaBlogs
 from .models import Blog
 
+
 def vista1 (request):
     return render(request,'index.html')
 
@@ -31,37 +32,37 @@ class ListadoBlogs(ListView):
         return context
     
     
-class CrearBlog(CreateView):
+class CrearBlog(LoginRequiredMixin,CreateView):
     model=Blog
     template_name = 'Blog/crear_blog.html'
     success_url = '/pages'
-    fields = ['titulo', "contenido", "descripcion",'fecha_creacion']
+    fields = ['titulo', "subtitulo", "contenido","autor",'fecha_creacion',"imagen"]
 
 
-class EditarBlog(LoginRequiredMixin, UpdateView):
+
+class EditarBlog(LoginRequiredMixin,UpdateView):
     model=Blog
-    template_name = 'Blog/edit_blog.html'
+    template_name = 'Blog/editar_blog.html'
     success_url = '/pages'
-    fields = ['titulo', "contenido","descripcion", 'fecha_creacion']
+    fields = ['titulo', "subtitulo","contenido","autor","fecha_creacion","imagen"]
 
 
 class EliminarBlog(LoginRequiredMixin, DeleteView):
     model=Blog
-    template_name = 'Blog/delete_blog.html'
-    success_url = '/pages'
+    template_name = 'Blog/eliminar_blog.html'
+    success_url = '/pages/'
 
 
 class MostrarBlog(DetailView):
     model = Blog
-    template_name = 'Blog/read_more.html'
+    template_name = 'Blog/ver_mas.html'
 
 def listado_blogs (request):
     
-    nombre_de_busqueda = request.POST.get("titulo")
-    if request.POST.get("titulo"):
+    nombre_de_busqueda = request.POST.get("Titulo")
+    if request.POST.get("Titulo"):
         listado_blogs = Blog.objects.filter(titulo__icontains = nombre_de_busqueda)
     else:
-        
         listado_blogs = Blog.objects.all()
     
     form = BusquedaBlogs()

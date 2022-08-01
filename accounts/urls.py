@@ -7,10 +7,10 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
       path("login/", login , name = "login"),
-      path("logout/", LogoutView.as_view(template_name="accounts/logout.html") , name = "logout"),
-      path("register/", register, name="register"),
-      path("profile/", profile , name = "profile"),
-      path("edit_profile/", edit_profile , name = "edit_profile"),
+      path("desloguear/", LogoutView.as_view(template_name="accounts/desloguear.html") , name = "desloguear"),
+      path("registrar/", register, name="registrar"),
+      path("perfil/", profile , name = "perfil"),
+      path("editar_perfil/", edit_profile , name = "editar_perfil"),
       
              
 ]

@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Edit Profile</title>
+<title>Editar Blog</title>
 {% endblock title %}
 
 {% block h1text %}
-Edit Profile {{request.user.username}}
+Editar Blog
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
-    <a href={% url 'profile' %}> Back</a>
+    <a href={% url 'listado_blogs' %}> Volver</a>
 </p>
 <p>
-   <form action={% url "edit_profile" %} method="POST" enctype = "multipart/form-data">
+   <form action={% url 'editar_blog' blog.id %} method="post" enctype = "multipart/form-data">
         {% csrf_token %}
         <table>
+            {{form.media}}
             {{form.as_table}}
         </table>
-       <button>Edit</button> 
+       <button>Editar</button> 
     </form>
 </p>
 

@@ -1,44 +1,41 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Blog List</title>
+<title>Blog</title>
 {% endblock title %}
 
 {% block h1text %}
-Blog List
+Listado de Blogs
 {% endblock h1text %}
 
 
 {% block post_header %}
 <p>
-    <a href={% url 'create_blog' %}>Create Blog</a> 
+    <a href={% url 'crear_blog' %}>Crear Blog</a> 
 
 </p>
 <p>
     <form action={% url 'listado_blogs' %}>
         {{form}}
-        <button>Search</button>
+        <button>Buscar</button>
     </form>
 </p>
 <p>
-    {% comment %} {% if object_list%}
+   {% if object_list %}
     <ul>
         {% for blog in object_list %}
         <li>
             {{blog}}
-            <a href={% url 'edit_blog' blog.id %}>edit</a> 
-            <a href={% url 'delete_blog' blog.id %}>delete</a>
-            <a href={% url 'readmore_blog' blog.id %}>read more</a>
-            
-
-
+            <a href={% url 'editar_blog' blog.id %}>Editar</a> 
+            <a href={% url 'eliminar_blog' blog.id %}>Eliminar</a>
+            <a href={% url 'vermas_blog' blog.id %}>Ver Mas</a>
         </li>
         
-        {% endfor %} {% endcomment %}
+        {% endfor %}
    </ul>
-    {% comment %} {% else %}
+    {% else %}
     No hay resultado en la busqueda
-    {% endif %} {% endcomment %}
+    {% endif %} 
 </p>
 
 

@@ -40,15 +40,15 @@ def register(request):
              form.save()
              return render(request,"index.html", {})
         else:
-            return render(request, "accounts/register.html", {"form":form}) 
+            return render(request, "accounts/registrar.html", {"form":form}) 
     
     form= MyUserCreationForm()
     
-    return render(request,"accounts/register.html", {"form": form})
+    return render(request,"accounts/registrar.html", {"form": form})
 
 @login_required
 def profile (request):
-    return render(request, 'accounts/profile.html')
+    return render(request, 'accounts/perfil.html')
 
 @login_required
 def edit_profile (request):
@@ -64,6 +64,9 @@ def edit_profile (request):
                 user.first_name = data.get("first_name")
             if data.get("last_name"):
                 user.last_name = data.get("last_name")
+            
+            user.descipcion = data.get("descripcion") if data.get("descripcion") else user.descripcion
+            user.link = data.get("link") if data.get("link") else user.link
             user.email = data.get("email") if data.get("email") else user.email
             more_user_data.avatar = data.get("avatar") if data.get("avatar") else more_user_data.avatar
             
@@ -72,16 +75,17 @@ def edit_profile (request):
             more_user_data.save()
             user.save()        
             
-            return redirect("profile")
+            return redirect("perfil")
         else:
-            return render(request,"accounts/edit_profile.html", {"form":form})
+            return render(request,"accounts/editar_perfil.html", {"form":form})
         
     form = MyUserEditForm(initial = {
                 "email" : user.email,
                 "first_name": user.first_name,
                 "last_name": user.last_name,
+                "descripcion": user.descripcion,
                 "avatar" : more_user_data.avatar,
             }
         )
         
-    return render(request,"accounts/edit_profile.html", {"form":form})
+    return render(request,"accounts/editar_perfil.html", {"form":form})

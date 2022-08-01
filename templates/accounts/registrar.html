@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 
 {% block title %}
-<title>Editar Blog</title>
+<title>Registrar</title>
 {% endblock title %}
 
 {% block h1text %}
-Editar Blog
+Registrar
 {% endblock h1text %}
 
 {% block post_header %}
 <p>
-    <a href={% url 'listado_blogs' %}> Back</a>
+    <a href={% url 'home' %}> Volver</a>
 </p>
 <p>
-   <form action={% url 'edit_blog' blog.id %} method="post">
+   
+    <form action={% url "registrar" %} method="POST">
         {% csrf_token %}
         <table>
-            {{form.media}}
             {{form.as_table}}
         </table>
-       <button>Edit</button> 
+       <button>Registrar</button> 
     </form>
 </p>
 
